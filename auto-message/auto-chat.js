@@ -1,7 +1,7 @@
 const cron = require('node-cron');
 
 module.exports = (client) => {
-    const channelId = '1357283130595086396'; // secara logika akan terkirim di #chat
+    const channelId = 'CHANNEL-ID'; // secara logika akan terkirim di #chat
 
     // ┌─────────────── menit (0 - 59)
     // │ ┌───────────── jam (0 - 23)
@@ -13,7 +13,7 @@ module.exports = (client) => {
     // * * * * *
 
 
-    cron.schedule('0 8 * * *', async () => {
+    cron.schedule('* * * * *', async () => {
         try {
             const channel = await client.channels.fetch(channelId);
             if (channel) {
@@ -30,4 +30,5 @@ module.exports = (client) => {
     }, {
         timezone: "Asia/Jakarta"
     });
+
 };
