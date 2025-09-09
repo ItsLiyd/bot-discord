@@ -2,8 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder, ActionRowBuilder, ButtonBuilder, Butt
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('avatar')
-        .setDescription('Menampilkan avatar user')
+        .setName('avatar') // Nama Command
+        .setDescription('Menampilkan avatar user') // Isi deskripsi
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('Pilih orangnya bg, kalo ga pilih berarti lu')
@@ -16,14 +16,14 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(
                 new ButtonBuilder()
-                    .setLabel('Download Avatar')
+                    .setLabel('Download Avatar nyah >_<')
                     .setStyle(ButtonStyle.Link)
                     .setURL(avatarURL)
             );
 
         const avatarEmbed = new EmbedBuilder()
             .setColor('#ff0000')
-            .setTitle(`🖼️ Avatar ${user.username}`)
+            .setTitle(`🖼️  Avatar ${user.username}`)
             .setImage(avatarURL)
             .setTimestamp()
             .setFooter({
