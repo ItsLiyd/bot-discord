@@ -83,14 +83,14 @@ client.on('messageCreate', async (message) => {
     } catch (error) {
       console.log('Gagal balikin nickname:', error);
     }
-    message.reply('Welkam back! Status AFK luwh udah dihapus. <a:smolhutao:1362644988147798159>');
+    message.reply('Welkam back! Status AFK luwh udah dihapus.');
   }
 
   // Cek apakah mention user yang AFK
   message.mentions.users.forEach(user => {
     const afkMentioned = client.afkUsers.get(`${message.guild.id}-${user.id}`);
     if (afkMentioned) {
-      message.reply(`<:arrow2:1414259950191906999> **${user.username}** lagi AFK\n<:blank:1271074823552110676> **Alasan:** ${afkMentioned.reason}`);
+      message.reply(`**${user.username}** lagi AFK\n**Alasan:** ${afkMentioned.reason}`);
     }
   });
 });
