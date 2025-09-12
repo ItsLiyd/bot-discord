@@ -21,6 +21,7 @@ client.commands = new Collection();
 
 // Langkah 2: Tambahkan perintah ke Collection
 client.commands.set(serverStatsCommand.data.name, serverStatsCommand);
+client.afkUsers = new Collection(); /// Menyimpan data AFK pengguna
 
 // Auto message
 client.on('ready', () => {
@@ -67,6 +68,31 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
+/// Untuk AFK commands
 
+client.on('messageCreate', async (message) => {
+  if (message.author.bot) return;
+
+  const afkInfo = client.afkUsers.get(`${message.guild.id}-${message.author.id}`);
+
+  // Cek apakah user sendiri sedang AFK
+  if (afkInfo) {
+    client.afkUsers.delete(`${message.guild.id}-${message.author.id}`);
+    try {
+      await message.member.setNickname(afkInfo.originalNickname);
+    } catch (error) {
+      console.log('Gagal balikin nickname:', error);
+    }
+    message.reply('Welkam back! Status AFK luwh udah dihapus. <a:smolhutao:1362644988147798159>');
+  }
+
+  // Cek apakah mention user yang AFK
+  message.mentions.users.forEach(user => {
+    const afkMentioned = client.afkUsers.get(`${message.guild.id}-${user.id}`);
+    if (afkMentioned) {
+      message.reply(`<:arrow2:1414259950191906999> **${user.username}** lagi AFK\n<:blank:1271074823552110676> **Alasan:** ${afkMentioned.reason}`);
+    }
+  });
+});
 
 client.login(BOT_TOKEN); // Biarin aja wak. ga usa di otak atik baian ini :v
