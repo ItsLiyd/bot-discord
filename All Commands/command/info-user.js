@@ -52,12 +52,12 @@ module.exports = {
                 },
                 { 
                     name: '💖 **Permissions**', 
-                    value: permissionList,
+                    value: permissionList.length > 1024 ? 'Beliau mempunyai terlalu banyak Permision' : permissionList,
                     inline: false
                 },
                 { 
                     name: '📋 **Roles**', 
-                    value: roles.length > 1024 ? 'Terlalu banyak roles' : roles,
+                    value: roles.length > 1024 ? 'Beliau ini mempunyai terlalu banyak roles' : roles,
                     inline: false
                 }
             )
