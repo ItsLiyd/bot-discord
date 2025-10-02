@@ -83,7 +83,14 @@ client.on('messageCreate', async (message) => {
     } catch (error) {
       console.log('Gagal balikin nickname:', error);
     }
-    message.reply('Welkam back! Status AFK luwh udah dihapus.');
+    // Kirim pesan balasan
+    const reply = await message.reply('Welkam back! Status AFK luwh udah dihapus');
+
+    // Hapus pesan balasan setelah 10 detik (10000 milidetik)
+    setTimeout(() => {
+    // Gunakan delete() pada pesan balasan
+    reply.delete().catch(err => console.error("Gagal menghapus pesan 'welcome back':", err));
+    }, 10000);
   }
 
   // Cek apakah mention user yang AFK
