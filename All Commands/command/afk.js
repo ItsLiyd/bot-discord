@@ -22,7 +22,8 @@ module.exports = {
         };
 
         // Simpan ke storage (gunakan database di production)
-        interaction.client.afkUsers.set(`${guildId}-${userId}`, afkData);
+        const afkKey = `${guildId}-${userId}`; 
+        interaction.client.afkUsers.set(afkKey, afkData);
 
         // Ubah nickname untuk menandakan AFK
         try {
