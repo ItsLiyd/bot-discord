@@ -27,7 +27,7 @@ module.exports = {
 
         // 3. Buat Embed untuk tampilan yang rapi
         const helpEmbed = new EmbedBuilder()
-            .setColor(FF0000) // Warna Merah
+            .setColor(0xFF0000) // Warna Merah
             .setTitle('📖 Daftar Command TawBot')
             .addFields(
                 { 
@@ -46,3 +46,4 @@ module.exports = {
     },
 
 };
+
