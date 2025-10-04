@@ -27,8 +27,6 @@ client.afkUsers = new Collection(); /// Menyimpan data AFK pengguna
 // Auto message
 client.on('ready', () => {
   console.log(`logged in as ${client.user.tag}`);
-  autoReminder(client);
-  autoShareYoutube(client);
   autoChat(client);
   welcomer(client);
 });
