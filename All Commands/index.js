@@ -1,6 +1,7 @@
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const serverStatsCommand = require('./command/server-stats.js');
 const autoChat = require('./auto-message/auto-chat.js');
+const welcomer = require('./auto-message/welcomer.js');
 
 //untoek slash command
 const fs = require('fs');
@@ -29,6 +30,7 @@ client.on('ready', () => {
   autoReminder(client);
   autoShareYoutube(client);
   autoChat(client);
+  welcomer(client);
 });
 
 const commandsPath = path.join(__dirname, 'command');
