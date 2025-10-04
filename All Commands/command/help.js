@@ -6,7 +6,6 @@ module.exports = {
         .setDescription('menampilkan daftar command yang tersedia.'),
 
     async execute(interaction) {
-        // Akses Collection client.commands yang berisi semua command yang dimuat
         const commands = interaction.client.commands;
         
         // 1. Cek apakah ada command yang termuat
@@ -19,19 +18,16 @@ module.exports = {
 
         // 2. Buat string daftar command
         const commandList = commands
-            // Map setiap command menjadi format string yang diinginkan
             .map(command => {
-                // Ambil nama dan deskripsi dari properti 'data'
                 const name = command.data.name;
                 const description = command.data.description || 'Tidak ada deskripsi.';
                 return `**/${name}** - ${description}`;
             })
-            // Gabungkan semua string dengan baris baru
             .join('\n');
 
         // 3. Buat Embed untuk tampilan yang rapi
         const helpEmbed = new EmbedBuilder()
-            .setColor(0xFFA500) // Warna Oranye
+            .setColor(FF0000) // Warna Merah
             .setTitle('📖 Daftar Command TawBot')
             .addFields(
                 { 
@@ -45,7 +41,8 @@ module.exports = {
         // Kirim embed
         await interaction.reply({ 
             embeds: [helpEmbed],
-            ephemeral: false // Atau set ke true jika kamu ingin hanya si pengguna yang melihatnya
+            ephemeral: false
         });
     },
+
 };
